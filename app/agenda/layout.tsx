@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
+import { Link } from "@heroui/link";
 import clsx from "clsx";
 
 import { Providers } from "./providers";
@@ -21,30 +22,21 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
+
+    { media: "(prefers-color-scheme: light)", color: "white" },
   ],
 };
 
-export default function RootLayout({
+export default function AgendaLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning lang="pt-BR">
-      <head />
-      <body
-        className={clsx(
-          "min-h-screen text-foreground bg-background font-sans antialiased",
-          fontSans.variable,
-        )}
-      >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <NavBar />
-          {children}
-        </Providers>
-      </body>
-    </html>
+
+    <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+      {children}
+    </Providers>
   );
 }
